@@ -56,7 +56,7 @@ $(function() {
          */
 
         it('has menu hidden by default', function() {
-            expect($('body').hasClass('slide-menu')).toBe(false);
+            expect(document.body.classList.contains('menu-hidden')).toBeDefined();
         });
 
          /* TODO: Write a test that ensures the menu changes
@@ -64,14 +64,13 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-        var body = document.body;
 
         it('has menu display when clicked', function() {
             $('.menu-icon-link').trigger('click');
-              expect(body.className).not.toBe('menu-hidden');
+              expect(document.body.className).not.toBe('menu-hidden');
 
             $('.menu-icon-link').trigger('click');
-              expect(body.className).toBe('menu-hidden');
+              expect(document.body.className).toBe('menu-hidden');
 
         });
     });
