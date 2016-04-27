@@ -88,6 +88,23 @@ $(function() {
     });
 
     describe('New Feed Selection', function() {
+        beforeEach(function(done){
+            $('.feed').empty()
 
+            loadFeed(0, function() {
+                before = $('.feed').find("h2").text();
+            });
+
+            loadFeed(1, function() {
+                after = $('.feed').find("h2").text();
+                done();
+            });
+        });
+
+        it('should make sure that loadFeed changes content', function(done){
+            expect(before).not.toEqual(after)
+            done();
+        });
     });
+
 }());
