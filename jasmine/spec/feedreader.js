@@ -9,10 +9,7 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
-    /* This is our first test suite - a test suite just contains
-    * a related set of tests. This suite is all about the RSS
-    * feeds definitions, the allFeeds variable in our application.
-    */
+
     describe('RSS Feeds', function() {
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
@@ -36,7 +33,7 @@ $(function() {
             allFeeds.forEach(function(feed){
                 expect(feed.url).toBeDefined();
                 expect(feed.url).not.toBe(0);
-            }); 
+            });
         });
 
         /* TODO: Write a test that loops through each feed
@@ -47,18 +44,17 @@ $(function() {
             allFeeds.forEach(function(feed){
                 expect(feed.name).toBeDefined();
                 expect(feed.name).not.toBe(0);
-            }); 
+            });
         });
     });
 
-
-    /* TODO: Write a new test suite named "The menu" */
     describe('The Menu', function() {
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
+
         it('has menu hidden by default', function() {
             expect($('body').hasClass('slide-menu')).toBe(false);
         });
@@ -68,86 +64,30 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-        it('has menu display when clicked', function() {
+        var body = document.body;
 
-            if($('.menu-icon-link').trigger('click');){
-                expect($('body').hasClass('slide-menu')).toBe(true);
-            }
-            else {
-                expect($('body').hasClass('menu-hidden')).toBe(true);
-            }    
+        it('has menu display when clicked', function() {
+            $('.menu-icon-link').trigger('click');
+              expect(body.className).not.toBe('menu-hidden');
+
+            $('.menu-icon-link').trigger('click');
+              expect(body.className).toBe('menu-hidden');
+
         });
     });
 
-        
-
-    /* TODO: Write a new test suite named "Initial Entries" */
-
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
     describe('Initial Entries', function() {
-        
+        beforeEach(function(done){
+            loadFeed(0,done);
+        });
+
+        it("should make sure that loadFeed has at least one entry", function(done){
+            expect($('.feed').children().length).not.toBe(0);
+            done();
+        });
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection"
-
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
     describe('New Feed Selection', function() {
-        
+
     });
 }());
-
-
- // /* A new test suite named "The menu" */
- //  describe('The menu', function() {
-
- 
- //  /* A new test suite named "Initial Entries" */
- //  describe('Initial Entries', function() {
-
- //     A test that ensures when the loadFeed
- //    * function is called and completes its work, there is at least
- //    * a single .entry element within the .feed container.
- //    * Remember, loadFeed() is asynchronous so this test will require
- //    * the use of Jasmine's beforeEach and asynchronous done() function.
-    
- //    beforeEach(function(done) {
- //      loadFeed (0, done);
- //    });
- //    it('should ensure the loadFeed calls at least one entry', function() {
- //      expect($('.feed .entry').length).toBeGreaterThan(0);
- //    });
- //  });
-
- //  /* A new test suite named "New Feed Selection" */
- //  describe('New Feed Selection', function() {
- //    var firstFeed;
-
- //    /* A test that ensures when a new feed is loaded
- //    * by the loadFeed function that the content actually changes.
- //    * Remember, loadFeed() is asynchronous.
- //    */
- //    beforeEach(function(done) {
- //      //loads the first feed (second feed in the array)
- //      loadFeed (1, function() {
- //        //saves the firstFeed loaded in the firstFeed variable
- //        firstFeed = $('.feed').html();
- //        done();
- //      });
- //    });
- //    it('should change the content when a new feed is loaded', function(done) {
- //      //loads the second feed (third feed in the array)
- //      loadFeed (2, function(){
- //        //checks second feed content against first feed content
- //        expect($('.feed').html()).not.toEqual(firstFeed);
- //        done();
- //      });
- //    });
- //  });
