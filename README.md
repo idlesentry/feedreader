@@ -18,7 +18,7 @@ In this project you are given a web-based application that reads RSS feeds. The 
 ## Functionality
 
 * RSS Feed Testing Suite
-	* Tests to make certain that the JSON in 'app.js' has not missing definitions
+	* Tests to make certain that the JSON in 'app.js' has no missing definitions
 	* Tests to make certain that the string for 'url' contains something
 	* Tests to make certain that the string for 'name' contains something
 
