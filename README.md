@@ -6,7 +6,7 @@ In this project you are given a web-based application that reads RSS feeds. The 
 1. Begin by opening index.html
 2. Wait for page to fully load
 3. Scroll to the bottom of the page to the section that starts with the Jasmine logo
-[Jasmine Screenshot](jasmineScreenshot.png)
+![Alt Text](jasmineScreenshot.png "Jasmine Screenshot")
 4. Under 'Jasmine__TopLevel__Suite' there will be titles of testing suites (beginning with 'RSS Feeds')
 5. Under each testing suite title there will be a clickable link that will run a specific test (beginning with 'is defined')
 6. All tests will run by default, but to carry out only one test you'll need to use the specific link mentioned above
